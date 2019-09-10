@@ -41,9 +41,17 @@
             this.panel_score = new System.Windows.Forms.Panel();
             this.panel_mode = new System.Windows.Forms.Panel();
             this.bClose = new System.Windows.Forms.Button();
+            this.label_controls = new System.Windows.Forms.Label();
+            this.panel_controls = new System.Windows.Forms.Panel();
+            this.label_w = new System.Windows.Forms.Label();
+            this.label_s = new System.Windows.Forms.Label();
+            this.label_a = new System.Windows.Forms.Label();
+            this.label_d = new System.Windows.Forms.Label();
+            this.label_space = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.panel_score.SuspendLayout();
             this.panel_mode.SuspendLayout();
+            this.panel_controls.SuspendLayout();
             this.SuspendLayout();
             // 
             // canvas
@@ -166,12 +174,86 @@
             this.bClose.UseVisualStyleBackColor = true;
             this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
+            // label_controls
+            // 
+            this.label_controls.AutoSize = true;
+            this.label_controls.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_controls.Location = new System.Drawing.Point(21, 9);
+            this.label_controls.Name = "label_controls";
+            this.label_controls.Size = new System.Drawing.Size(98, 25);
+            this.label_controls.TabIndex = 11;
+            this.label_controls.Text = "Controls:";
+            // 
+            // panel_controls
+            // 
+            this.panel_controls.Controls.Add(this.label_space);
+            this.panel_controls.Controls.Add(this.label_d);
+            this.panel_controls.Controls.Add(this.label_a);
+            this.panel_controls.Controls.Add(this.label_s);
+            this.panel_controls.Controls.Add(this.label_w);
+            this.panel_controls.Controls.Add(this.label_controls);
+            this.panel_controls.Location = new System.Drawing.Point(809, 211);
+            this.panel_controls.Name = "panel_controls";
+            this.panel_controls.Size = new System.Drawing.Size(135, 160);
+            this.panel_controls.TabIndex = 12;
+            // 
+            // label_w
+            // 
+            this.label_w.AutoSize = true;
+            this.label_w.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_w.Location = new System.Drawing.Point(31, 45);
+            this.label_w.Name = "label_w";
+            this.label_w.Size = new System.Drawing.Size(58, 20);
+            this.label_w.TabIndex = 12;
+            this.label_w.Text = "W - Up";
+            // 
+            // label_s
+            // 
+            this.label_s.AutoSize = true;
+            this.label_s.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_s.Location = new System.Drawing.Point(31, 65);
+            this.label_s.Name = "label_s";
+            this.label_s.Size = new System.Drawing.Size(74, 20);
+            this.label_s.TabIndex = 13;
+            this.label_s.Text = "S - Down";
+            // 
+            // label_a
+            // 
+            this.label_a.AutoSize = true;
+            this.label_a.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_a.Location = new System.Drawing.Point(31, 85);
+            this.label_a.Name = "label_a";
+            this.label_a.Size = new System.Drawing.Size(61, 20);
+            this.label_a.TabIndex = 14;
+            this.label_a.Text = "A - Left";
+            // 
+            // label_d
+            // 
+            this.label_d.AutoSize = true;
+            this.label_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_d.Location = new System.Drawing.Point(31, 105);
+            this.label_d.Name = "label_d";
+            this.label_d.Size = new System.Drawing.Size(72, 20);
+            this.label_d.TabIndex = 15;
+            this.label_d.Text = "D - Right";
+            // 
+            // label_space
+            // 
+            this.label_space.AutoSize = true;
+            this.label_space.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_space.Location = new System.Drawing.Point(14, 125);
+            this.label_space.Name = "label_space";
+            this.label_space.Size = new System.Drawing.Size(113, 20);
+            this.label_space.TabIndex = 16;
+            this.label_space.Text = "Space - Pause";
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(954, 600);
+            this.Controls.Add(this.panel_controls);
             this.Controls.Add(this.bClose);
             this.Controls.Add(this.panel_mode);
             this.Controls.Add(this.bPlay);
@@ -192,6 +274,8 @@
             this.panel_score.PerformLayout();
             this.panel_mode.ResumeLayout(false);
             this.panel_mode.PerformLayout();
+            this.panel_controls.ResumeLayout(false);
+            this.panel_controls.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -209,6 +293,13 @@
         private System.Windows.Forms.Panel panel_score;
         private System.Windows.Forms.Panel panel_mode;
         private System.Windows.Forms.Button bClose;
+        private System.Windows.Forms.Label label_controls;
+        private System.Windows.Forms.Panel panel_controls;
+        private System.Windows.Forms.Label label_d;
+        private System.Windows.Forms.Label label_a;
+        private System.Windows.Forms.Label label_s;
+        private System.Windows.Forms.Label label_w;
+        private System.Windows.Forms.Label label_space;
     }
 }
 
