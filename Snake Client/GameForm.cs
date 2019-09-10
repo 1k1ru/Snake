@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Snake.API;
 
 namespace SnakeClient
 {
@@ -20,7 +21,7 @@ namespace SnakeClient
         Graphics g;
         SolidBrush sbG, sbH, sbT, sbF;
 
-        SnakeAPI.Game game;
+        Game game;
 
         public GameForm()
         {
@@ -71,7 +72,7 @@ namespace SnakeClient
             bPlay.Enabled = true;
             timerGame.Enabled = false;
 
-            game = new SnakeAPI.Game(SnakeAPI.Game.Mode.WithBorders, hTiles, vTiles);
+            game = new Game(Mode.WithBorders, hTiles, vTiles);
 
             lScore.Text = game.Score.ToString();
             Draw();
@@ -83,7 +84,7 @@ namespace SnakeClient
             bPlay.Enabled = true;
             timerGame.Enabled = false;
 
-            game = new SnakeAPI.Game(SnakeAPI.Game.Mode.Borderless, hTiles, vTiles);
+            game = new Game(Mode.Borderless, hTiles, vTiles);
 
             lScore.Text = game.Score.ToString();
             Draw();
@@ -96,20 +97,20 @@ namespace SnakeClient
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        if (game.Snake.Dir != SnakeAPI.Snake.Direction.Down)
-                            game.Snake.Dir = SnakeAPI.Snake.Direction.Up;
+                        if (game.Snake.Direction != Direction.Down)
+                            game.Snake.Direction = Direction.Up;
                         break;
                     case Keys.A:
-                        if (game.Snake.Dir != SnakeAPI.Snake.Direction.Right)
-                            game.Snake.Dir = SnakeAPI.Snake.Direction.Left;
+                        if (game.Snake.Direction != Direction.Right)
+                            game.Snake.Direction = Direction.Left;
                         break;
                     case Keys.S:
-                        if (game.Snake.Dir != SnakeAPI.Snake.Direction.Up)
-                            game.Snake.Dir = SnakeAPI.Snake.Direction.Down;
+                        if (game.Snake.Direction != Direction.Up)
+                            game.Snake.Direction = Direction.Down;
                         break;
                     case Keys.D:
-                        if (game.Snake.Dir != SnakeAPI.Snake.Direction.Left)
-                            game.Snake.Dir = SnakeAPI.Snake.Direction.Right;
+                        if (game.Snake.Direction != Direction.Left)
+                            game.Snake.Direction = Direction.Right;
                         break;
                     case Keys.Space:
                         bPlay_Click(sender, e);
@@ -144,9 +145,9 @@ namespace SnakeClient
             bPlay.BackgroundImage = Properties.Resources.play;
 
             if (radioButton_WithBorders.Checked)
-                game = new SnakeAPI.Game(SnakeAPI.Game.Mode.WithBorders, hTiles, vTiles);
+                game = new Game(Mode.WithBorders, hTiles, vTiles);
             else if (radioButton_Borderless.Checked)
-                game = new SnakeAPI.Game(SnakeAPI.Game.Mode.Borderless, hTiles, vTiles);
+                game = new Game(Mode.Borderless, hTiles, vTiles);
         }
 
         private void Draw()

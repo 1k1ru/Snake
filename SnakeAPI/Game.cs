@@ -1,18 +1,22 @@
-﻿namespace SnakeAPI
+﻿namespace Snake.API
 {
     public class Game
     {
-        public enum Mode { Borderless, WithBorders }
-
-        public SnakeAPI.Snake Snake { get; private set; }
-        public SnakeAPI.Fruit Fruit { get; private set; }
-
+        internal protected Mode Mode { get; set; }
+        public int FieldWidth { get; }
+        public int FieldHeight { get; }
+        public Snake Snake { get; private set; }
+        public Fruit Fruit { get; private set; }
         public int Score { get; private set; }
 
         public Game(Mode mode, int width, int height)
         {
-            Snake = new Snake(mode, width, height);
-            Fruit = new Fruit(width, height);
+            this.Mode = mode;
+            this.FieldWidth = width;
+            this.FieldHeight = height;
+
+            Snake = new Snake(this);
+            Fruit = new Fruit(this);
             Score = 0;
         }
 

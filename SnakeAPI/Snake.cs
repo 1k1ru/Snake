@@ -1,28 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace SnakeAPI
+namespace Snake.API
 {
     public class Snake
     {
-        private Game.Mode mode;
-        private int width, height;
+        private Game game;
 
         public Point Head { get { return head; } }
         private Point head;
         public List<Point> Tail { get; private set; }
 
-        public enum Direction { Up, Down, Left, Right }
-        public Direction Dir { get; set; }
+        
+        public Direction Direction { get; set; }
 
-        public Snake(Game.Mode mode, int width, int height)
+        public Snake(Game game)
         {
-            this.mode = mode;
-            this.width = width;
-            this.height = height;
-
-            head = new Point(width / 2, height / 2);
-            Dir = Direction.Right;
+            this.game = game;
+            head = new Point(game.FieldWidth / 2, game.FieldHeight / 2);
+            Direction = Direction.Right;
             Tail = new List<Point>();
             Tail.Add(head);
         }
@@ -33,26 +29,26 @@ namespace SnakeAPI
                 Tail[i] = Tail[i - 1];
             Tail[0] = head;
 
-            switch (Dir)
+            switch (Direction)
             {
                 case Direction.Up:
                     head.Y--;
-                    if (mode == Game.Mode.Borderless && head.Y == -1)
-                        head.Y = height - 1;
+                    if (game.Mode == Mode.Borderless && head.Y == -1)
+                        head.Y = game.FieldHeight - 1;
                     break;
                 case Direction.Down:
                     head.Y++;
-                    if (mode == Game.Mode.Borderless && head.Y == height)
+                    if (game.Mode == Mode.Borderless && head.Y == game.FieldHeight)
                         head.Y = 0;
                     break;
                 case Direction.Left:
                     head.X--;
-                    if (mode == Game.Mode.Borderless && head.X == -1)
-                        head.X = width - 1;
+                    if (game.Mode == Mode.Borderless && head.X == -1)
+                        head.X = game.FieldWidth - 1;
                     break;
                 case Direction.Right:
                     head.X++;
-                    if (mode == Game.Mode.Borderless && head.X == width)
+                    if (game.Mode == Mode.Borderless && head.X == game.FieldWidth)
                         head.X = 0;
                     break;
             }
@@ -61,8 +57,8 @@ namespace SnakeAPI
 
         private bool Collision()
         {
-            if (mode == Game.Mode.WithBorders)
-                return Tail.Contains(head) || head.X < 0 || head.X >= width || head.Y < 0 || head.Y >= height;
+            if (game.Mode == Mode.WithBorders)
+                return Tail.Contains(head) || head.X < 0 || head.X >= game.FieldWidth || head.Y < 0 || head.Y >= game.FieldHeight;
             else
                 return Tail.Contains(head);
         }
